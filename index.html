@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratw - Plan better, start your day right</title>
+  
+  <!-- Google Fonts: Inter & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Animations and Delays -->
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stagger-item {
+      opacity: 0;
+      animation-name: fadeInUp;
+      animation-duration: 0.9s;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      animation-fill-mode: forwards;
+    }
+
+    .delay-bg {
+      animation-delay: 0.2s;
+    }
+
+    .delay-nav {
+      animation-delay: 1.0s;
+    }
+
+    .delay-h1 {
+      animation-delay: 1.8s;
+    }
+
+    .delay-p {
+      animation-delay: 2.6s;
+    }
+
+    .delay-btn {
+      animation-delay: 3.4s;
+    }
+
+    .font-serif-italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body class="bg-[#e5e7eb] min-h-screen flex items-center justify-center p-4 font-sans antialiased">
+
+  <!-- Main Container -->
+  <div class="relative w-full max-w-[1400px] aspect-[4/3] md:aspect-[16/9] min-h-[600px] md:min-h-[800px] rounded-[2rem] overflow-hidden shadow-2xl bg-black stagger-item delay-bg">
+    
+    <!-- Background Video -->
+    <div class="absolute inset-0 w-full h-full">
+      <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-90">
+        <source src="https://cdn.sceneai.art/Hero%20Section%20Video/e988037c-bf57-4b3b-8ba9-b69167028de8.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+
+    <!-- Navigation (Top Positioned) -->
+    <header class="absolute top-0 left-0 w-full p-6 md:p-10 flex justify-between items-start md:items-center z-30 stagger-item delay-nav">
+      <!-- Logo -->
+      <a href="#" class="text-white text-2xl font-bold tracking-[0.2em] uppercase select-none hover:opacity-90 transition-opacity">
+        Ratw
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#home" class="text-white text-sm font-medium hover:text-white/80 transition-colors">Home</a>
+        <a href="#pricing" class="text-white text-sm font-medium hover:text-white/80 transition-colors">Pricing</a>
+        <a href="#about" class="text-white text-sm font-medium hover:text-white/80 transition-colors">About</a>
+        <a href="#insights" class="text-white text-sm font-medium hover:text-white/80 transition-colors">Insights</a>
+        <a href="#contact" class="text-white text-sm font-medium hover:text-white/80 transition-colors">Contact</a>
+        <a href="#get-template" class="bg-white text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-neutral-100 hover:scale-105 active:scale-95 transition-all duration-200 shadow-md">
+          Get template
+        </a>
+      </nav>
+
+      <!-- Mobile Nav Toggle -->
+      <div class="relative md:hidden">
+        <button id="mobile-toggle" aria-label="Toggle Navigation Menu" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black shadow-lg hover:bg-neutral-100 active:scale-95 transition-all duration-200 focus:outline-none">
+          <!-- Hamburger Icon -->
+          <svg id="icon-hamburger" class="w-6 h-6 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Close Icon -->
+          <svg id="icon-close" class="w-6 h-6 hidden transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Mobile Dropdown Menu -->
+        <nav id="mobile-menu" class="absolute top-16 right-0 w-64 bg-white rounded-2xl shadow-2xl p-6 flex flex-col space-y-4 opacity-0 invisible scale-95 translate-y-[-10px] transition-all duration-300 ease-out origin-top-right">
+          <a href="#home" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">Home</a>
+          <a href="#pricing" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">Pricing</a>
+          <a href="#about" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">About</a>
+          <a href="#insights" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">Insights</a>
+          <a href="#contact" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">Contact</a>
+          <div class="pt-2 border-t border-neutral-100">
+            <a href="#get-template" class="mobile-nav-link block text-center bg-black text-white font-medium py-3 rounded-xl hover:bg-neutral-800 transition-colors">
+              Get template
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Content (Bottom Positioned) -->
+    <div class="absolute inset-0 flex flex-col items-center justify-end pb-12 md:pb-24 text-center px-4 z-20 pointer-events-none">
+      
+      <!-- Headline H1 -->
+      <h1 class="text-[58px] leading-[1.1] font-semibold text-white tracking-tight max-w-4xl stagger-item delay-h1 pointer-events-auto">
+        Plan better, <br class="hidden md:block"> start your day <span class="font-serif-italic font-normal">right</span>
+      </h1>
+
+      <!-- Subheadline P -->
+      <p class="text-white/90 text-[18px] md:text-[20px] font-normal mt-4 max-w-xl leading-relaxed stagger-item delay-p pointer-events-auto">
+        A smarter planner for tasks<br>priorities and daily structure
+      </p>
+
+      <!-- CTA Button -->
+      <div class="mt-8 stagger-item delay-btn pointer-events-auto">
+        <a href="#create-plan" class="inline-block bg-white text-black font-semibold text-base md:text-lg px-8 py-4 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">
+          Create your plan
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Vanilla JavaScript Interactivity -->
+  <script>
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconHamburger = document.getElementById('icon-hamburger');
+    const iconClose = document.getElementById('icon-close');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    let isOpen = false;
+
+    function toggleMenu() {
+      isOpen = !isOpen;
+
+      if (isOpen) {
+        // Show Close icon, hide Hamburger
+        iconHamburger.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+
+        // Transition dropdown in
+        mobileMenu.classList.remove('opacity-0', 'invisible', 'scale-95', 'translate-y-[-10px]');
+        mobileMenu.classList.add('opacity-100', 'visible', 'scale-100', 'translate-y-0');
+      } else {
+        // Show Hamburger icon, hide Close
+        iconHamburger.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+
+        // Transition dropdown out
+        mobileMenu.classList.remove('opacity-100', 'visible', 'scale-100', 'translate-y-0');
+        mobileMenu.classList.add('opacity-0', 'invisible', 'scale-95', 'translate-y-[-10px]');
+      }
+    }
+
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (isOpen && !mobileMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        toggleMenu();
+      }
+    });
+
+    // Close when clicking any menu link
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (isOpen) toggleMenu();
+      });
+    });
+  </script>
+</body>
+</html>
