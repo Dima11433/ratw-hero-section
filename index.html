@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
   <!-- Google Fonts: Inter & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -72,10 +72,12 @@
     }
   </style>
 </head>
-<body class="bg-[#e5e7eb] min-h-screen flex items-center justify-center p-4 font-sans antialiased">
+<body class="bg-[#e5e7eb] min-h-screen flex flex-col items-center p-4 md:p-8 font-sans antialiased text-neutral-900 selection:bg-neutral-900 selection:text-white">
 
-  <!-- Main Container -->
-  <div class="relative w-full max-w-[1400px] aspect-[4/3] md:aspect-[16/9] min-h-[600px] md:min-h-[800px] rounded-[2rem] overflow-hidden shadow-2xl bg-black stagger-item delay-bg">
+  <!-- ========================================== -->
+  <!-- 1. HERO SECTION (Exact specification)      -->
+  <!-- ========================================== -->
+  <div id="home" class="relative w-full max-w-[1400px] aspect-[4/3] md:aspect-[16/9] min-h-[600px] md:min-h-[800px] rounded-[2rem] overflow-hidden shadow-2xl bg-black stagger-item delay-bg">
     
     <!-- Background Video -->
     <div class="absolute inset-0 w-full h-full">
@@ -90,18 +92,17 @@
     <!-- Navigation (Top Positioned) -->
     <header class="absolute top-0 left-0 w-full p-6 md:p-10 flex justify-between items-start md:items-center z-30 stagger-item delay-nav">
       <!-- Logo -->
-      <a href="#" class="text-white text-2xl font-bold tracking-[0.2em] uppercase select-none hover:opacity-90 transition-opacity">
+      <a href="#home" class="text-white text-2xl font-bold tracking-[0.2em] uppercase select-none hover:opacity-90 transition-opacity">
         Ratw
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-8">
         <a href="#home" class="text-white text-sm font-medium hover:text-white/80 transition-colors">Home</a>
-        <a href="#pricing" class="text-white text-sm font-medium hover:text-white/80 transition-colors">Pricing</a>
-        <a href="#about" class="text-white text-sm font-medium hover:text-white/80 transition-colors">About</a>
-        <a href="#insights" class="text-white text-sm font-medium hover:text-white/80 transition-colors">Insights</a>
-        <a href="#contact" class="text-white text-sm font-medium hover:text-white/80 transition-colors">Contact</a>
-        <a href="#get-template" class="bg-white text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-neutral-100 hover:scale-105 active:scale-95 transition-all duration-200 shadow-md">
+        <a href="#features" class="text-white text-sm font-medium hover:text-white/80 transition-colors">Features</a>
+        <a href="#demo" class="text-white text-sm font-medium hover:text-white/80 transition-colors">Interactive Demo</a>
+        <a href="#faq" class="text-white text-sm font-medium hover:text-white/80 transition-colors">FAQ</a>
+        <a href="#cta" class="bg-white text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-neutral-100 hover:scale-105 active:scale-95 transition-all duration-200 shadow-md">
           Get template
         </a>
       </nav>
@@ -122,12 +123,11 @@
         <!-- Mobile Dropdown Menu -->
         <nav id="mobile-menu" class="absolute top-16 right-0 w-64 bg-white rounded-2xl shadow-2xl p-6 flex flex-col space-y-4 opacity-0 invisible scale-95 translate-y-[-10px] transition-all duration-300 ease-out origin-top-right">
           <a href="#home" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">Home</a>
-          <a href="#pricing" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">Pricing</a>
-          <a href="#about" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">About</a>
-          <a href="#insights" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">Insights</a>
-          <a href="#contact" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">Contact</a>
+          <a href="#features" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">Features</a>
+          <a href="#demo" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">Interactive Demo</a>
+          <a href="#faq" class="mobile-nav-link text-neutral-800 font-medium hover:text-black hover:translate-x-1 transition-all">FAQ</a>
           <div class="pt-2 border-t border-neutral-100">
-            <a href="#get-template" class="mobile-nav-link block text-center bg-black text-white font-medium py-3 rounded-xl hover:bg-neutral-800 transition-colors">
+            <a href="#cta" class="mobile-nav-link block text-center bg-black text-white font-medium py-3 rounded-xl hover:bg-neutral-800 transition-colors">
               Get template
             </a>
           </div>
@@ -150,7 +150,7 @@
 
       <!-- CTA Button -->
       <div class="mt-8 stagger-item delay-btn pointer-events-auto">
-        <a href="#create-plan" class="inline-block bg-white text-black font-semibold text-base md:text-lg px-8 py-4 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">
+        <a href="#demo" class="inline-block bg-white text-black font-semibold text-base md:text-lg px-8 py-4 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">
           Create your plan
         </a>
       </div>
@@ -158,33 +158,371 @@
 
   </div>
 
-  <!-- Vanilla JavaScript Interactivity -->
+  <!-- ========================================== -->
+  <!-- 2. SOCIAL PROOF / BRAND LOGOS              -->
+  <!-- ========================================== -->
+  <section class="w-full max-w-[1400px] py-14 flex flex-col items-center border-b border-neutral-300/60">
+    <p class="text-xs font-semibold tracking-widest text-neutral-500 uppercase mb-8">
+      Designed for focused minds at high-impact teams
+    </p>
+    <div class="w-full flex flex-wrap items-center justify-center gap-10 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition duration-300">
+      <span class="text-lg md:text-xl font-bold tracking-tighter text-neutral-800">▲ Vercel</span>
+      <span class="text-lg md:text-xl font-bold tracking-tight text-neutral-800">LINEAR</span>
+      <span class="text-lg md:text-xl font-semibold tracking-wide text-neutral-800">Notion</span>
+      <span class="text-lg md:text-xl font-bold tracking-normal text-neutral-800">Figma</span>
+      <span class="text-lg md:text-xl font-extrabold tracking-widest text-neutral-800">RAYCAST</span>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 3. BENTO GRID: CORE FEATURES               -->
+  <!-- ========================================== -->
+  <section id="features" class="w-full max-w-[1400px] pt-20 pb-16">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900/5 text-neutral-800 text-xs font-semibold mb-4">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Intelligent Workflow
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-neutral-900">
+        Everything you need to own your 24 hours.
+      </h2>
+      <p class="text-neutral-600 mt-4 text-base md:text-lg">
+        Say goodbye to overwhelming 50-task backlogs. Focus exclusively on what moves the needle today.
+      </p>
+    </div>
+
+    <!-- Bento Grid Container -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Card 1 (Span 2) -->
+      <div class="md:col-span-2 bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-neutral-200/80 flex flex-col justify-between hover:shadow-md transition group">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center mb-6 shadow-md">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-neutral-900 mb-2">Smart High-Leverage Prioritization</h3>
+          <p class="text-neutral-600 max-w-lg leading-relaxed">
+            Every morning, Ratw isolates your single most important action (P1) and arranges supporting tasks around your natural circadian focus peaks.
+          </p>
+        </div>
+
+        <!-- Visual simulation -->
+        <div class="mt-8 bg-neutral-50 rounded-2xl p-4 border border-neutral-100 flex flex-col gap-3">
+          <div class="flex items-center justify-between bg-white p-3.5 rounded-xl shadow-xs border border-neutral-100">
+            <div class="flex items-center gap-3">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-100 text-rose-700">P1 HIGHEST</span>
+              <span class="text-sm font-semibold text-neutral-900">Finalize product architecture spec</span>
+            </div>
+            <span class="text-xs text-neutral-400 font-mono">09:00 - 11:30</span>
+          </div>
+          <div class="flex items-center justify-between bg-white/70 p-3.5 rounded-xl border border-neutral-100">
+            <div class="flex items-center gap-3">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-700">P2 DEEP</span>
+              <span class="text-sm font-medium text-neutral-700">Review team pull requests & feedback</span>
+            </div>
+            <span class="text-xs text-neutral-400 font-mono">13:00 - 14:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 (Span 1) -->
+      <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-neutral-200/80 flex flex-col justify-between hover:shadow-md transition">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-neutral-900 text-white flex items-center justify-center mb-6 shadow-md">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-neutral-900 mb-2">Deep Focus Flow</h3>
+          <p class="text-neutral-600 text-sm leading-relaxed">
+            Built-in adaptive Pomodoro timer that dims distractions and keeps you in the zone.
+          </p>
+        </div>
+
+        <div class="mt-8 bg-neutral-950 text-white rounded-2xl p-6 text-center shadow-inner">
+          <div class="text-3xl font-mono font-bold tracking-wider mb-1">25:00</div>
+          <div class="text-xs text-neutral-400 flex items-center justify-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Focus sprint active
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 (Span 1) -->
+      <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-neutral-200/80 flex flex-col justify-between hover:shadow-md transition">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-neutral-900 text-white flex items-center justify-center mb-6 shadow-md">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-neutral-900 mb-2">Compounding Streaks</h3>
+          <p class="text-neutral-600 text-sm leading-relaxed">
+            Track daily wins. Small habits executed consecutively become unfair advantages.
+          </p>
+        </div>
+
+        <div class="mt-8 bg-amber-50 rounded-2xl p-5 border border-amber-200 flex items-center justify-between">
+          <div>
+            <div class="text-2xl font-bold text-amber-900">28 Days</div>
+            <div class="text-xs text-amber-700">Unbroken streak</div>
+          </div>
+          <span class="text-3xl">🔥</span>
+        </div>
+      </div>
+
+      <!-- Card 4 (Span 2) -->
+      <div class="md:col-span-2 bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-neutral-200/80 flex flex-col justify-between hover:shadow-md transition">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-neutral-900 text-white flex items-center justify-center mb-6 shadow-md">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-neutral-900 mb-2">Unified Calendar & Timeblocking</h3>
+          <p class="text-neutral-600 max-w-lg leading-relaxed">
+            Your tasks seamlessly blend with Google Calendar, Outlook, and Apple iCal so you never commit to more work than your day can physically handle.
+          </p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-3 gap-3">
+          <div class="p-3 bg-neutral-50 rounded-xl border border-neutral-100 text-center">
+            <span class="text-xs text-neutral-400 block font-mono">09:00 AM</span>
+            <span class="text-xs font-semibold text-neutral-800">Deep Work</span>
+          </div>
+          <div class="p-3 bg-neutral-50 rounded-xl border border-neutral-100 text-center">
+            <span class="text-xs text-neutral-400 block font-mono">11:30 AM</span>
+            <span class="text-xs font-semibold text-neutral-800">Design Sync</span>
+          </div>
+          <div class="p-3 bg-neutral-900 text-white rounded-xl text-center shadow-xs">
+            <span class="text-xs text-neutral-400 block font-mono">02:00 PM</span>
+            <span class="text-xs font-semibold text-white">Recharge & Walk</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. INTERACTIVE DEMO (Try it right now!)    -->
+  <!-- ========================================== -->
+  <section id="demo" class="w-full max-w-[1400px] py-16">
+    <div class="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-xl border border-neutral-200/80">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-black text-white text-xs font-semibold uppercase tracking-wider">
+            Interactive Sandbox
+          </span>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mt-3">
+            Experience the morning flow right now
+          </h2>
+          <p class="text-neutral-500 mt-2">
+            Add tasks, complete items, or watch your progress bar update in real-time.
+          </p>
+        </div>
+
+        <!-- Progress Counter -->
+        <div class="bg-neutral-50 px-6 py-3 rounded-2xl border border-neutral-200 flex items-center gap-4">
+          <div>
+            <div class="text-xs text-neutral-400 font-medium">Daily Progress</div>
+            <div id="progress-text" class="text-lg font-bold text-neutral-900">1 of 3 completed</div>
+          </div>
+          <div class="w-12 h-12 rounded-full border-4 border-neutral-200 flex items-center justify-center font-bold text-xs" id="progress-percent">
+            33%
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Task Input -->
+      <form id="task-form" class="flex gap-3 mb-8">
+        <input 
+          id="task-input" 
+          type="text" 
+          placeholder="What is one essential task for today? (e.g. Write launch article)" 
+          class="flex-1 bg-neutral-100 hover:bg-neutral-50 focus:bg-white border border-neutral-200 focus:border-black rounded-2xl px-5 py-4 text-sm md:text-base outline-none transition duration-200"
+          required
+        >
+        <button 
+          type="submit" 
+          class="bg-black hover:bg-neutral-800 active:scale-95 text-white font-medium px-6 md:px-8 py-4 rounded-2xl transition duration-200 shadow-md text-sm md:text-base whitespace-nowrap"
+        >
+          Add Task
+        </button>
+      </form>
+
+      <!-- Task List Container -->
+      <div id="task-list" class="space-y-3">
+        <!-- Interactive tasks rendered by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. FAQ ACCORDION                           -->
+  <!-- ========================================== -->
+  <section id="faq" class="w-full max-w-[1000px] py-16">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-neutral-600 mt-3">
+        Clear answers about our philosophy, privacy, and how Ratw fits into your routine.
+      </p>
+    </div>
+
+    <div class="space-y-4" id="faq-container">
+      
+      <!-- FAQ Item 1 -->
+      <div class="faq-item bg-white rounded-2xl border border-neutral-200/80 overflow-hidden shadow-xs">
+        <button class="faq-toggle w-full p-6 text-left flex justify-between items-center font-semibold text-neutral-900 text-lg hover:text-black">
+          <span>How is Ratw different from typical to-do list apps?</span>
+          <svg class="faq-chevron w-5 h-5 text-neutral-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-neutral-600 leading-relaxed">
+            Most to-do apps act like endless junkyards where tasks go to linger and create guilt. Ratw is built on a <strong>daily reset principle</strong>: you start every morning with a clear canvas, picking only 3-5 high-leverage outcomes that actually move your life forward.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item bg-white rounded-2xl border border-neutral-200/80 overflow-hidden shadow-xs">
+        <button class="faq-toggle w-full p-6 text-left flex justify-between items-center font-semibold text-neutral-900 text-lg hover:text-black">
+          <span>Does Ratw work completely offline?</span>
+          <svg class="faq-chevron w-5 h-5 text-neutral-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-neutral-600 leading-relaxed">
+            Yes. All your daily notes, schedules, and active plans are stored locally on your device first. Whenever you reconnect to Wi-Fi, your changes seamlessly sync across all your devices.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item bg-white rounded-2xl border border-neutral-200/80 overflow-hidden shadow-xs">
+        <button class="faq-toggle w-full p-6 text-left flex justify-between items-center font-semibold text-neutral-900 text-lg hover:text-black">
+          <span>Can I integrate with Google and Apple Calendar?</span>
+          <svg class="faq-chevron w-5 h-5 text-neutral-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-neutral-600 leading-relaxed">
+            Absolutely. Ratw features instant two-way synchronization with Google Calendar, Outlook 365, and Apple Calendar. Meetings appear directly within your morning timeline.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item bg-white rounded-2xl border border-neutral-200/80 overflow-hidden shadow-xs">
+        <button class="faq-toggle w-full p-6 text-left flex justify-between items-center font-semibold text-neutral-900 text-lg hover:text-black">
+          <span>Is my data private and secure?</span>
+          <svg class="faq-chevron w-5 h-5 text-neutral-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-neutral-600 leading-relaxed">
+            We operate on a zero-knowledge architecture. Your schedule and personal thoughts are encrypted end-to-end. We never train public AI models on your private tasks or sell user data.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. BOTTOM CALL TO ACTION                   -->
+  <!-- ========================================== -->
+  <section id="cta" class="w-full max-w-[1400px] my-16">
+    <div class="bg-black text-white rounded-[2.5rem] p-10 md:p-20 text-center relative overflow-hidden shadow-2xl">
+      <!-- Background Ambient Glow -->
+      <div class="absolute -top-32 -left-32 w-80 h-80 bg-neutral-700/30 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-32 -right-32 w-80 h-80 bg-neutral-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+          Start tomorrow with clarity, <br class="hidden md:block">not chaos.
+        </h2>
+        <p class="text-neutral-400 text-base md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
+          Join thousands of high performers who begin each day intentional, structured, and focused.
+        </p>
+
+        <!-- Waitlist / Newsletter Form -->
+        <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            required
+            class="bg-neutral-900 border border-neutral-700 focus:border-white text-white rounded-full px-6 py-4 outline-none text-sm placeholder:text-neutral-500 transition duration-200"
+          >
+          <button 
+            type="submit" 
+            class="bg-white text-black font-semibold px-8 py-4 rounded-full hover:bg-neutral-100 active:scale-95 transition-all duration-200 shadow-md text-sm whitespace-nowrap"
+          >
+            Get early access
+          </button>
+        </form>
+        <p id="waitlist-success" class="text-emerald-400 text-sm mt-4 hidden">
+          ✓ You are on the priority list! We'll reach out soon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 7. FOOTER                                  -->
+  <!-- ========================================== -->
+  <footer class="w-full max-w-[1400px] py-10 flex flex-col md:flex-row items-center justify-between border-t border-neutral-300 text-xs text-neutral-500 gap-4">
+    <div class="flex items-center gap-3">
+      <span class="font-bold tracking-[0.2em] text-neutral-900 uppercase text-sm">Ratw</span>
+      <span>•</span>
+      <span>Designed for intentional daily routines.</span>
+    </div>
+    <div class="flex items-center space-x-6">
+      <a href="#home" class="hover:text-neutral-900 transition-colors">Home</a>
+      <a href="#features" class="hover:text-neutral-900 transition-colors">Features</a>
+      <a href="#demo" class="hover:text-neutral-900 transition-colors">Demo</a>
+      <a href="#faq" class="hover:text-neutral-900 transition-colors">FAQ</a>
+    </div>
+    <div>
+      © 2026 Ratw Inc. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- INTERACTIVE VANILLA JS                     -->
+  <!-- ========================================== -->
   <script>
+    // --------------------------------------------
+    // Mobile Navigation Toggle
+    // --------------------------------------------
     const mobileToggle = document.getElementById('mobile-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const iconHamburger = document.getElementById('icon-hamburger');
     const iconClose = document.getElementById('icon-close');
     const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
-    let isOpen = false;
+    let isMenuOpen = false;
 
     function toggleMenu() {
-      isOpen = !isOpen;
+      isMenuOpen = !isMenuOpen;
 
-      if (isOpen) {
-        // Show Close icon, hide Hamburger
+      if (isMenuOpen) {
         iconHamburger.classList.add('hidden');
         iconClose.classList.remove('hidden');
-
-        // Transition dropdown in
         mobileMenu.classList.remove('opacity-0', 'invisible', 'scale-95', 'translate-y-[-10px]');
         mobileMenu.classList.add('opacity-100', 'visible', 'scale-100', 'translate-y-0');
       } else {
-        // Show Hamburger icon, hide Close
         iconHamburger.classList.remove('hidden');
         iconClose.classList.add('hidden');
-
-        // Transition dropdown out
         mobileMenu.classList.remove('opacity-100', 'visible', 'scale-100', 'translate-y-0');
         mobileMenu.classList.add('opacity-0', 'invisible', 'scale-95', 'translate-y-[-10px]');
       }
@@ -195,18 +533,130 @@
       toggleMenu();
     });
 
-    // Close when clicking outside
     document.addEventListener('click', (e) => {
-      if (isOpen && !mobileMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+      if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
         toggleMenu();
       }
     });
 
-    // Close when clicking any menu link
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
-        if (isOpen) toggleMenu();
+        if (isMenuOpen) toggleMenu();
       });
+    });
+
+    // --------------------------------------------
+    // Interactive Task Sandbox Demo
+    // --------------------------------------------
+    let tasks = [
+      { id: 1, text: "Review morning brief & set today's top 3 outcomes", completed: true },
+      { id: 2, text: "Deep work session: complete product design prototype", completed: false },
+      { id: 3, text: "30-minute cardio & afternoon recovery walk", completed: false }
+    ];
+
+    const taskList = document.getElementById('task-list');
+    const taskForm = document.getElementById('task-form');
+    const taskInput = document.getElementById('task-input');
+    const progressText = document.getElementById('progress-text');
+    const progressPercent = document.getElementById('progress-percent');
+
+    function renderTasks() {
+      taskList.innerHTML = '';
+      const total = tasks.length;
+      const completedCount = tasks.filter(t => t.completed).length;
+      const percent = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+
+      progressText.textContent = `${completedCount} of ${total} completed`;
+      progressPercent.textContent = `${percent}%`;
+
+      tasks.forEach(task => {
+        const item = document.createElement('div');
+        item.className = `flex items-center justify-between p-4 rounded-2xl border transition-all duration-200 ${
+          task.completed 
+            ? 'bg-neutral-50/70 border-neutral-200 text-neutral-400' 
+            : 'bg-white border-neutral-200/90 text-neutral-800 shadow-xs hover:border-neutral-400'
+        }`;
+
+        item.innerHTML = `
+          <div class="flex items-center gap-4 flex-1 cursor-pointer" onclick="toggleTask(${task.id})">
+            <button class="w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all ${
+              task.completed 
+                ? 'bg-black border-black text-white' 
+                : 'border-neutral-300 hover:border-neutral-600 bg-white'
+            }">
+              ${task.completed ? '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>' : ''}
+            </button>
+            <span class="text-sm md:text-base font-medium select-none ${task.completed ? 'line-through text-neutral-400' : 'text-neutral-900'}">
+              ${task.text}
+            </span>
+          </div>
+          <button onclick="deleteTask(${task.id})" class="text-neutral-400 hover:text-rose-500 p-2 transition-colors" title="Delete">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+          </button>
+        `;
+        taskList.appendChild(item);
+      });
+    }
+
+    window.toggleTask = function(id) {
+      tasks = tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+      renderTasks();
+    };
+
+    window.deleteTask = function(id) {
+      tasks = tasks.filter(t => t.id !== id);
+      renderTasks();
+    };
+
+    taskForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = taskInput.value.trim();
+      if (!val) return;
+      tasks.push({
+        id: Date.now(),
+        text: val,
+        completed: false
+      });
+      taskInput.value = '';
+      renderTasks();
+    });
+
+    renderTasks();
+
+    // --------------------------------------------
+    // FAQ Accordion Toggle
+    // --------------------------------------------
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const toggle = item.querySelector('.faq-toggle');
+      const content = item.querySelector('.faq-content');
+      const chevron = item.querySelector('.faq-chevron');
+
+      toggle.addEventListener('click', () => {
+        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+        // Close all items
+        document.querySelectorAll('.faq-content').forEach(c => c.style.maxHeight = '0px');
+        document.querySelectorAll('.faq-chevron').forEach(ch => ch.classList.remove('rotate-180'));
+
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          chevron.classList.add('rotate-180');
+        }
+      });
+    });
+
+    // --------------------------------------------
+    // Waitlist Form Handler
+    // --------------------------------------------
+    const waitlistForm = document.getElementById('waitlist-form');
+    const waitlistSuccess = document.getElementById('waitlist-success');
+
+    waitlistForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      waitlistForm.classList.add('hidden');
+      waitlistSuccess.classList.remove('hidden');
     });
   </script>
 </body>
