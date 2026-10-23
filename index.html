@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ratw — Планируйте лучше, начните день правильно</title>
   
+  <!-- PWA & Mobile Meta Tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon.svg">
+
   <!-- Google Fonts: Inter & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -548,11 +557,20 @@
     // --------------------------------------------
     // Interactive Task Sandbox Demo
     // --------------------------------------------
-    let tasks = [
+    // --------------------------------------------
+    // LocalStorage Persistent Tasks
+    // --------------------------------------------
+    const defaultTasks = [
       { id: 1, text: "Изучить утренний дайджест и выделить топ-3 цели на день", completed: true },
       { id: 2, text: "Сессия глубокой работы: доработать прототип продукта", completed: false },
       { id: 3, text: "30 минут кардио и вечерняя прогулка для восстановления", completed: false }
     ];
+
+    let tasks = JSON.parse(localStorage.getItem('ratw_tasks')) || defaultTasks;
+
+    function saveTasks() {
+      localStorage.setItem('ratw_tasks', JSON.stringify(tasks));
+    }
 
     const taskList = document.getElementById('task-list');
     const taskForm = document.getElementById('task-form');
@@ -600,11 +618,13 @@
 
     window.toggleTask = function(id) {
       tasks = tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+      saveTasks();
       renderTasks();
     };
 
     window.deleteTask = function(id) {
       tasks = tasks.filter(t => t.id !== id);
+      saveTasks();
       renderTasks();
     };
 
@@ -617,6 +637,7 @@
         text: val,
         completed: false
       });
+      saveTasks();
       taskInput.value = '';
       renderTasks();
     });
@@ -657,6 +678,66 @@
       waitlistForm.classList.add('hidden');
       waitlistSuccess.classList.remove('hidden');
     });
+
+    // --------------------------------------------
+    // PWA Service Worker & Install Handler
+    // --------------------------------------------
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch((err) => {
+          console.log('SW registration failed:', err);
+        });
+      });
+    }
+
+    let deferredPrompt;
+    const pwaBanner = document.getElementById('pwa-install-banner');
+    const pwaInstallBtn = document.getElementById('pwa-install-btn');
+    const pwaCloseBtn = document.getElementById('pwa-close-btn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (pwaBanner) {
+        pwaBanner.classList.remove('hidden');
+        pwaBanner.classList.add('flex');
+      }
+    });
+
+    if (pwaInstallBtn) {
+      pwaInstallBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) {
+          // If prompt not available yet, alert guide for Chrome/Android
+          alert("Чтобы установить приложение на телефон: нажмите три точки в браузере (⋮) -> 'Установить приложение' или 'Добавить на главный экран'");
+          return;
+        }
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          if (pwaBanner) pwaBanner.classList.add('hidden');
+        }
+        deferredPrompt = null;
+      });
+    }
+
+    if (pwaCloseBtn && pwaBanner) {
+      pwaCloseBtn.addEventListener('click', () => {
+        pwaBanner.classList.add('hidden');
+      });
+    }
   </script>
+
+  <!-- Floating PWA Install Banner -->
+  <aside id="pwa-install-banner" aria-label="Установка приложения" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden bg-neutral-950 text-white px-5 py-3 rounded-full shadow-2xl border border-neutral-700/80 items-center gap-3 transition-all duration-300 max-w-[92vw]">
+    <img src="icon.svg" class="w-8 h-8 rounded-lg shadow-sm" alt="Иконка Ratw">
+    <div class="text-xs select-none">
+      <span class="font-bold block text-sm">Установить приложение Ratw</span>
+      <span class="text-neutral-400">Быстрый запуск с домашнего экрана</span>
+    </div>
+    <button id="pwa-install-btn" class="ml-2 bg-white text-black text-xs font-bold px-4 py-2 rounded-full hover:bg-neutral-100 active:scale-95 transition whitespace-nowrap">
+      Установить
+    </button>
+    <button id="pwa-close-btn" class="text-neutral-400 hover:text-white p-1 text-sm ml-1" title="Закрыть">✕</button>
+  </aside>
 </body>
 </html>
